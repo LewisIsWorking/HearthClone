@@ -8,11 +8,19 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
+
+    private Button changeButtonText;
+    private TextView Testview_HelloWord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +37,28 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        changeButtonText = (Button)findViewById(R.id.play_button);
+        Testview_HelloWord = (TextView) findViewById(R.id.Testview_HelloWord);
+
+        changeButtonText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(changeButtonText.getText() == "Button Clicked")
+                {
+                    changeButtonText.setText("STOP CLICKING ME");
+                    Testview_HelloWord.setText("Ah nooooooo");
+                }
+                else
+                {
+                    changeButtonText.setText("Button Clicked");
+                    Testview_HelloWord.setText("Yeet");
+                }
+
+            }
+        });
+
     }
 
     @Override
